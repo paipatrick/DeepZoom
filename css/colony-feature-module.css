@@ -1,0 +1,143 @@
+/*
+This software was developed at the National Institute of Standards and
+Technology by employees of the Federal Government in the course of
+their official duties. Pursuant to title 17 Section 105 of the United
+States Code this software is not subject to copyright protection and is
+in the public domain. This software is an experimental system. NIST assumes
+no responsibility whatsoever for its use by other parties, and makes no
+guarantees, expressed or implied, about its quality, reliability, or
+any other characteristic. We would appreciate acknowledgement if the
+software is used.
+*/
+/* 
+    Created on : Feb 28, 2014, 4:28:43 PM
+    Author     : Antoine Vandecreme <antoine.vandecreme@nist.gov>
+*/
+
+.wdzt-features-dialog {
+    font-size: 0.8em;
+}
+
+.wdzt-features-dialog .ui-widget-header {
+    font-size: 0.8em;
+    background-image: none;
+}
+
+.wdzt-features-dialog dt {
+    cursor: pointer;
+}
+
+.wdzt-features-dialog dt .ui-icon {
+    float:left;
+}
+
+.wdzt-features-dialog dd {
+    margin: 0;
+}
+
+.wdzt-features-dialog dd dl {
+    margin-left: 10px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.wdzt-features-dialog table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.wdzt-features-dialog table th,
+.wdzt-features-dialog table td {
+    border: 1px solid black;
+}
+
+#wdzt-annotation-container {
+  display: block;
+  width: 90%; 
+  border: 1px solid #e1e1e8; 
+  background-color: #f7f7f9; 
+  padding: 5px ;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#wdzt-annotation-textarea-container {
+  display: block;
+  width: 80%; 
+  padding-right: 5px; 
+  margin: 5px 0;
+}
+
+#wdzt-annotation-label-container {
+  display: inline;
+  margin: 5px 0;
+}
+
+.wdzt-annotation-saved {
+  display: none; 
+  float: right; 
+  padding: 0 3px; 
+  text-align: center; 
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  border-radius: 4px;
+}
+
+.wdzt-annotation-textarea {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+.wdzt-tags-container {
+  border: 1px solid #e1e1e8;
+  background-color: #f7f7f9;
+  border-radius: 4px;
+}
+
+.wdzt-tags-head {
+  border:1px solid #e1e1e8;
+  padding: 2px 4px;
+}
+
+.wdzt-tags-head:hover {
+  background:#eee;
+}
+
+.wdzt-tags-head span {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  border-radius: 3px;
+  margin: 0 3px;
+  font-weight: bold;
+  display: inline-block;
+  vertical-align: baseline;
+  padding: 2px 4px;
+}
+
+.wdzt-tags-list {
+  display:inline-block;
+}
+
+.wdzt-tags-menu {
+  height: 100px;
+  overflow: auto;
+  display: none;
+  border-color: #eed3d7;
+  border-radius: 4px;
+  padding: 2px 4px;
+}
+
+.wdzt-tags-menu ul {
+  margin: 0;
+  list-style: none;
+  float: left;
+  padding: 0;
+  padding-left: 1em;
+}

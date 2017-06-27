@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--
+     * This software was developed at the National Institute of Standards and
+     * Technology by employees of the Federal Government in the course of
+     * their official duties. Pursuant to title 17 Section 105 of the United
+     * States Code this software is not subject to copyright protection and is
+     * in the public domain. This software is an experimental system. NIST assumes
+     * no responsibility whatsoever for its use by other parties, and makes no
+     * guarantees, expressed or implied, about its quality, reliability, or
+     * any other characteristic. We would appreciate acknowledgement if the
+     * software is used.
+    -->
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+        <title>WebDeepZoomToolkit</title>
+
+        <!-- build:cssdeps css/deps.css -->
+        <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css"/>
+        <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/theme.css"/>
+        <link rel="stylesheet" href="libs/jquery/css/jquery.tree.css"/>
+        <!-- endbuild -->
+
+        <!-- build:csswdzt css/wdzt.css -->
+        <link rel="stylesheet" href="css/wdzt.css"/>
+        <link rel="stylesheet" href="css/filtering-module.css"/>
+        <link rel="stylesheet" href="css/display-info-module.css"/>
+        <link rel="stylesheet" href="css/fetching-module.css"/>
+        <link rel="stylesheet" href="css/recording-module.css"/>
+        <link rel="stylesheet" href="css/scalebar-module.css"/>
+        <link rel="stylesheet" href="css/colony-searching-module.css"/>
+        <link rel="stylesheet" href="css/colony-feature-module.css"/>
+        <link rel="stylesheet" href="css/transitions-widgets.css"/>
+        <link rel="stylesheet" href="css/connectivity-analysis-module.css"/>
+        <!-- endbuild -->
+
+        <style>
+            #container {
+                width: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h3>WDZT DEBUG</h3>
+        <div id="container"></div>
+
+        <!-- build:deps js/deps.js -->
+
+        <!-- jQuery and plugins -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+        <script src="libs/jquery/js/jquery-ui-dialog-html-title.js"></script>
+        <script src="libs/jquery/js/jquery.tree.js"></script>
+        <script src="bower_components/jquery-file-download/src/Scripts/jquery.fileDownload.js"></script>
+        <script src="bower_components/jquery-color/jquery.color.js"></script>
+
+
+        <!-- noty (jQuery plugin) -->
+        <script src="bower_components/noty/js/noty/jquery.noty.js"></script>
+        <script src="bower_components/noty/js/noty/layouts/bottomRight.js"></script>
+        <script src="bower_components/noty/js/noty/themes/default.js"></script>
+
+
+        <!-- OpenSeadragon and plugins -->
+        <script src="libs/openseadragon/openseadragon.js"></script>
+
+        <script src="libs/openseadragon/openseadragon-viewerinputhook.js"></script>
+        <script src="libs/openseadragon/openseadragon-pixelcolor.js"></script>
+        <script src="libs/openseadragon/openseadragon-movie.js"></script>
+        <script src="libs/openseadragon/openseadragon-recorder.js"></script>
+        <script src="libs/openseadragon/openseadragon-scalebar.js"></script>
+        <script src="libs/openseadragon/openseadragon-xraytransitions.js"></script>
+        <script src="libs/openseadragon/openseadragon-filtering.js"></script>
+
+
+        <!--Others--> 
+        <script src="bower_components/handlebars/handlebars.js"></script>
+        <script src="bower_components/jszip/dist/jszip.js"></script>
+        <script src="bower_components/file-saver-saveas-js/FileSaver.js"></script>
+        <script src="bower_components/caman/dist/caman.full.js"></script>
+        <script src="libs/IFJS/src/features-extractor.js"></script>
+
+        <!-- endbuild -->
+
+        <!-- build:wdzt js/wdzt.js -->
+
+        <!-- Own code -->
+        <script src="src/wdzt.js"></script>
+        <script src="src/viewer.js"></script>
+        <script src="src/toolbar.js"></script>
+        <script src="src/manifest.js"></script>
+        <script src="src/module.js"></script>
+
+        <!-- modules, sorted alphabetically -->
+        <script src="src/modules/colony-feature-module.js"></script>
+        <script src="src/modules/colony-searching-module.js"></script>
+        <script src="src/modules/connectivity-analysis-module.js"></script>
+        <script src="src/modules/display-info-module.js"></script>
+        <script src="src/modules/distance-measurement-module.js"></script>
+        <script src="src/modules/fetching-module.js"></script>
+        <script src="src/modules/filtering-module.js"></script>
+        <script src="src/modules/layer-composition-module.js"></script>
+        <script src="src/modules/layer-selection-module.js"></script>
+        <script src="src/modules/nearby-transitions-module.js"></script>
+        <script src="src/modules/object-fetching-module.js"></script>
+        <script src="src/modules/recording-module.js"></script>
+        <script src="src/modules/scalebar-module.js"></script>
+        <script src="src/modules/transitions-overlay-module.js"></script>
+
+        <!-- logic code -->
+        <script src="src/logic/element-color.js"></script>
+        <script src="src/logic/xraytransitions.js"></script>
+        <script src="src/logic/colony-helper.js"></script>
+
+        <!-- widgets -->
+        <script src="src/widgets/transitions-tree-selector.js"></script>
+        <script src="src/widgets/nearby-transitions-displayer.js"></script>
+        <script src="src/widgets/spinner-slider.js"></script>
+        <script src="src/widgets/spinner.js"></script>
+
+        <!-- endbuild -->
+
+        <script>            
+            var wdzt = WDZT({
+                id: "container",
+                OpenSeadragon: {
+                    maxZoomPixelRatio: Infinity
+                },
+                NearbyTransitionsModule: {
+                    xrayUrl: "data/xrays.xml"
+                },
+                autoAdjustHeight: true,
+                autoAdjustMinHeight: 500
+            });
+            wdzt.open("data/manifest.json", {
+                layer: "gfp",
+                frame: 3,
+                ColonySearchingModule: {
+                    colony: 10
+                }
+            });
+        </script>
+    </body>
+</html>
